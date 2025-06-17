@@ -1,20 +1,4 @@
-
-
-def normalize_number(numbers):
-    correct_numbers = []
-    numbers = numbers.replace(" ", "")
-    numbers = numbers.replace("+7", "8")
-    for number in numbers.split(","):
-        if len(number) == 11:
-            number = "8" + number[1:]
-            correct_numbers.append(number)
-    return correct_numbers
-
-
-def normalize_name(name):
-    name = name.replace(" ", "")
-    return name[0].upper() + name[1:].lower()
-
+from func.edit import number,name
 
 contacts = {"Александр": ["89632536781", "89366518742"],
             "Мария": ["89026997800"],
@@ -42,29 +26,11 @@ while True:
             print(f"Контакта с именем '{name}' не существует.")
 
     if key_word == 'edit_name':
-        print(*contacts.keys(), sep=", ")
-        name = normalize_name(input("Введите имя контакта для редактирования: "))
-
-        if name in contacts:
-            new_name = normalize_name(input("Введите новое имя (оставьте пустым, чтобы оставить прежнее): "))
-            if new_name:
-                contacts[new_name] = contacts.pop(name)
-                name = new_name
-            print(f"Контакт '{name}' успешно отредактирован.")
-        else:
-            print(f"Контакта с именем {name} не найдено.")  # Должна быть возможность отредактировать ВСЁ
+        contacts = name(contacts)
 
     if key_word == "edit_number":
-        print(*contacts.keys(), sep=", ")
-        name = normalize_name(input("Введите имя контакта для редактирования: "))
-        numbers = contacts[name]
-        print("Номера контакта:", end=" ")
-        print(*numbers, sep=", ")
-        old_number = normalize_number(input("Введите номер который хотите изменить: "))
-        index_number = numbers.index(old_number[0])
-        new_number = normalize_number(input("Введите новый номер: "))
-        numbers[index_number] = new_number[0]
-        contacts[name] = numbers
+        contacts = number(contacts)
+
 
     if key_word == 'see':
         print(*contacts.keys(), sep=", ")
