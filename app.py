@@ -11,7 +11,7 @@ while True:
             print("Уже есть это имя")
         else:
             phone = normalize_number(input(
-                "Введите номера контакта через запятую: "))  # Написать функцию которая будет приводить номера к стандартизированному виду: (8 *** *** ****)
+                "Введите номера контакта через запятую: "))
             contacts[name] = phone
 
 
@@ -46,8 +46,8 @@ while True:
         for name, phones in contacts.items():
             print(f"{name} -", end=" ")
             print(*phones, sep=", ")
-        # Хочу видеть весь список контактов
-    if key_word == 'add_n':  # Добавить номер
+
+    if key_word == 'add_n':
         print(*contacts.keys(), sep=", ")
         name = normalize_name(input("Введите контакт, к которому хотите добавить номер: "))
         if name in contacts.keys():
