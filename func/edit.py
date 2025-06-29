@@ -1,7 +1,7 @@
 from func.normalize import normalize_name, normalize_number
 
 
-def name(contacts):
+def name_e(contacts):
     print(*contacts.keys(), sep=", ")
     name = normalize_name(input("Введите имя контакта для редактирования: "))
 
@@ -16,7 +16,7 @@ def name(contacts):
     return contacts
 
 # добавить проверку на имя, номер.
-def number(contacts):
+def number_e(contacts):
     print(*contacts.keys(), sep=", ")
     name = normalize_name(input("Введите имя контакта для редактирования: "))
     numbers = contacts[name]
